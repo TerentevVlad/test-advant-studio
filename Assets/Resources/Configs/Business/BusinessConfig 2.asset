@@ -15,6 +15,7 @@ MonoBehaviour:
   _name: Business 2
   _productionTime: 6
   _baseIncome:
+    _name: 
     _cost:
       _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
       _startValue: 40
@@ -46,6 +47,63 @@ MonoBehaviour:
       - name: "2\t80"
       - name: "3\t120"
       - name: "4\t160"
+  _multipliersIncome:
+  - _name: upgrade 1
+    _cost:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 1200
+      _xArgument: 0
+      _yArgument: 0
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 1
+      _startStep: 0
+      _keyCurves:
+      - name: "0\t1200"
+      _resource: {fileID: 11400000, guid: 266cf1c532894e645b82937b7b46a6bb, type: 2}
+    _value:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 1
+      _xArgument: 1
+      _yArgument: 1
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 5
+      _startStep: 0
+      _keyCurves:
+      - name: "0\t1"
+      - name: "1\t2"
+      - name: "2\t3"
+      - name: "3\t4"
+      - name: "4\t5"
+  - _name: upgrade 2
+    _cost:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 4000
+      _xArgument: 0
+      _yArgument: 0
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 1
+      _startStep: 1
+      _keyCurves:
+      - name: "0\t4000"
+      _resource: {fileID: 11400000, guid: 266cf1c532894e645b82937b7b46a6bb, type: 2}
+    _value:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 1
+      _xArgument: 2
+      _yArgument: 0
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 5
+      _startStep: 0
+      _keyCurves:
+      - name: "0\t1"
+      - name: "1\t3"
+      - name: "2\t5"
+      - name: "3\t7"
+      - name: "4\t9"
   _multiplierIncome1:
     _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
     _startValue: 1

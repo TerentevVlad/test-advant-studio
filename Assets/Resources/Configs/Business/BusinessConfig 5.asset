@@ -15,6 +15,7 @@ MonoBehaviour:
   _name: Business 5
   _productionTime: 30
   _baseIncome:
+    _name: 
     _cost:
       _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
       _startValue: 5000
@@ -46,6 +47,63 @@ MonoBehaviour:
       - name: "2\t10000"
       - name: "3\t15000"
       - name: "4\t20000"
+  _multipliersIncome:
+  - _name: upgrade 1
+    _cost:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 100000
+      _xArgument: 0
+      _yArgument: 0
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 1
+      _startStep: 0
+      _keyCurves:
+      - name: "0\t100000"
+      _resource: {fileID: 11400000, guid: 266cf1c532894e645b82937b7b46a6bb, type: 2}
+    _value:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 1
+      _xArgument: 2
+      _yArgument: 1
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 5
+      _startStep: 0
+      _keyCurves:
+      - name: "0\t1"
+      - name: "1\t3"
+      - name: "2\t5"
+      - name: "3\t7"
+      - name: "4\t9"
+  - _name: upgrade 2
+    _cost:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 500000
+      _xArgument: 0
+      _yArgument: 0
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 1
+      _startStep: 1
+      _keyCurves:
+      - name: "0\t500000"
+      _resource: {fileID: 11400000, guid: 266cf1c532894e645b82937b7b46a6bb, type: 2}
+    _value:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 1
+      _xArgument: 4
+      _yArgument: 0
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 5
+      _startStep: 0
+      _keyCurves:
+      - name: "0\t1"
+      - name: "1\t5"
+      - name: "2\t9"
+      - name: "3\t13"
+      - name: "4\t17"
   _multiplierIncome1:
     _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
     _startValue: 1

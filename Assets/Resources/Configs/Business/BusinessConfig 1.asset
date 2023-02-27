@@ -15,6 +15,7 @@ MonoBehaviour:
   _name: Business 1
   _productionTime: 3
   _baseIncome:
+    _name: 
     _cost:
       _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
       _startValue: 3
@@ -46,36 +47,63 @@ MonoBehaviour:
       - name: "2\t6"
       - name: "3\t9"
       - name: "4\t12"
-  _income:
-    _growthFunction: {fileID: 11400000, guid: 54067c0d3c6f71e439d62623ab73401c, type: 2}
-    _startValue: 3
-    _xArgument: 3
-    _yArgument: 0
-    _zArgument: 0
-    _customStartStepCalculate: 0
-    _numShowKeys: 5
-    _startStep: 1
-    _keyCurves:
-    - name: "0\t0"
-    - name: "1\t3"
-    - name: "2\t6"
-    - name: "3\t9"
-    - name: "4\t12"
-  _businessCost:
-    _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
-    _startValue: 3
-    _xArgument: 3
-    _yArgument: 0
-    _zArgument: 0
-    _customStartStepCalculate: 0
-    _numShowKeys: 5
-    _startStep: 0
-    _keyCurves:
-    - name: "0\t3"
-    - name: "1\t6"
-    - name: "2\t9"
-    - name: "3\t12"
-    - name: "4\t15"
+  _multipliersIncome:
+  - _name: upgrade 1
+    _cost:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 50
+      _xArgument: 0
+      _yArgument: 0
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 1
+      _startStep: 0
+      _keyCurves:
+      - name: "0\t50"
+      _resource: {fileID: 0}
+    _value:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 1
+      _xArgument: 0.5
+      _yArgument: 1
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 5
+      _startStep: 0
+      _keyCurves:
+      - name: "0\t1"
+      - name: "1\t1,5"
+      - name: "2\t2"
+      - name: "3\t2,5"
+      - name: "4\t3"
+  - _name: upgrade 2
+    _cost:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 400
+      _xArgument: 0
+      _yArgument: 0
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 1
+      _startStep: 1
+      _keyCurves:
+      - name: "0\t400"
+      _resource: {fileID: 0}
+    _value:
+      _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
+      _startValue: 1
+      _xArgument: 1
+      _yArgument: 0
+      _zArgument: 0
+      _customStartStepCalculate: 0
+      _numShowKeys: 5
+      _startStep: 0
+      _keyCurves:
+      - name: "0\t1"
+      - name: "1\t2"
+      - name: "2\t3"
+      - name: "3\t4"
+      - name: "4\t5"
   _multiplierIncome1:
     _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
     _startValue: 1

@@ -22,7 +22,7 @@ namespace DefaultNamespace
                 for (int i = 0; i < levelComponent.Levels.Count; i++)
                 {
                     var level = levelComponent.Levels[i];
-                    multiplier *= businessComponent.BusinessConfig.GetMultiplierIncome(i, level);
+                    multiplier *= businessComponent.BusinessConfig.GetMultiplierIncome(i).GetValue(level);
                 }
                 
                 ref var multiplierIncomeComponent = ref _filterModifierIncome.Get1(index);

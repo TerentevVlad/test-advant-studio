@@ -57,6 +57,32 @@ namespace DefaultNamespace
         {
             _layout.AddUpgradeModifierClickListener(onClick);
         }
+
+        public void SetInteractableModifierButton(int index, bool isInteractable)
+        {
+            _layout.SetInteractableModifierButton(index, isInteractable);
+        }
+
+        public void SetPurchasedStatusModifierButton(int index, bool isPurchased)
+        {
+            _layout.SetPurchasedStatusModifierButton(index, isPurchased);
+        }
+
+        public void SetModifierUpgradeCost(int index, AttributeConfig incomeAttribute, int level)
+        {
+            var cost = incomeAttribute.GetCost(level);
+            var resourceConfig = incomeAttribute.ResourceConfig;
+            _layout.SetModifierUpgradeCost(index, resourceConfig, cost);
+        }
+
+        public void SetModifierValue(int index, AttributeConfig incomeAttributeModifier)
+        {
+            var value = incomeAttributeModifier.GetValue(1);
+            value *= 100;
+            value -= 100;
+            string percent = $"+{value}%";
+            _layout.SetModifierValue(index, percent);
+        }
     }
     
 }

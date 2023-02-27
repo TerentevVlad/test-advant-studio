@@ -15,7 +15,7 @@ namespace Layouts
             {
                 var layout = GetResourceLayout(resource);
                 if(layout != null)
-                    layout.Init(resource.ResourceConfig, resource.Value);
+                    layout.SetValue(resource.ResourceConfig, resource.Value);
             }
         }
 

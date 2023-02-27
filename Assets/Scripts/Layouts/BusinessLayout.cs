@@ -53,6 +53,10 @@ namespace Layouts
             _buttonUpgrade.SetResource(resourceConfig, cost);
         }
 
+        public void SetModifierUpgradeCost(int index, IResourceConfig resourceConfig, double cost)
+        {
+            _buttonsModifier[index].SetResource(resourceConfig, cost);
+        }
         public void SetInteractableUpgradeButton(bool isInteractable)
         {
             _buttonUpgrade.SetInteractable(isInteractable);
@@ -69,6 +73,23 @@ namespace Layouts
                     onClick?.Invoke(index);
                 });
             }
+        }
+
+        public void SetInteractableModifierButton(int index, bool isInteractable)
+        {
+            _buttonsModifier[index].SetInteractable(isInteractable);
+        }
+
+        public void SetPurchasedStatusModifierButton(int index, bool isPurchased)
+        {
+            _buttonsModifier[index].SetActiveResourceIcon(!isPurchased);
+            _buttonsModifier[index].SetResource(null, "Purchased");
+        }
+
+
+        public void SetModifierValue(int index, string percent)
+        {
+            _buttonsModifier[index].SetPropertyValue(percent);
         }
     }
 }

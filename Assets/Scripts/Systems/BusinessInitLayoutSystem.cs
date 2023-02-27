@@ -36,8 +36,27 @@ namespace DefaultNamespace
 
             foreach (var index in _modifierComponentFilter)
             {
-                ref var entity = ref _upgradeComponentFilter.GetEntity(index);
+                ref var entity = ref _modifierComponentFilter.GetEntity(index);
+                ref var levelComponent = ref _modifierComponentFilter.Get1(index);
+                var buyModifierComponent = _modifierComponentFilter.Get2(index);
+                var indexModifier = buyModifierComponent.IndexModifier;
+                
+                var multiplierAttribute = _modifierComponentFilter.Get3(index).BusinessConfig.GetMultiplierIncome(indexModifier);
 
+                
+                
+                var resource = _playerResourceContainer.GetResource(multiplierAttribute.ResourceConfig.Key);
+                var cost = multiplierAttribute.GetCost(levelComponent.Levels[indexModifier]);
+
+                if (resource.Value >= cost)
+                {
+                    Debug.LogError("Subtract "+  cost);
+                    _playerResourceContainer.Subtract(resource.ResourceConfig, cost);
+                    levelComponent.Levels[indexModifier]++;
+                }
+                
+               
+                entity.Del<BuyModifierComponent>();
             }
         }
     }
