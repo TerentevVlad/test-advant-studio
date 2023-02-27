@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using Configs;
 using Leopotam.Ecs;
+#if UNITY_EDITOR
 using Leopotam.Ecs.UnityIntegration;
+#endif
 using ResourceSystem;
 using Saves;
 using Systems;
