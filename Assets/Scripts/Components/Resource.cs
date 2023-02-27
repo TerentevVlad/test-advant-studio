@@ -4,7 +4,7 @@ namespace DefaultNamespace
 {
     public class Resource
     {
-        public IResourceConfig ResourceConfig;
+        public ResourceConfig ResourceConfig;
         public double Value;
     }
 }

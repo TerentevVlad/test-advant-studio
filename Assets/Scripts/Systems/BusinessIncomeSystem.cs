@@ -16,9 +16,15 @@ namespace DefaultNamespace
             {
                 var businessComponent = _filterModifierIncome.Get3(index);
                 var levelComponent = _filterModifierIncome.Get2(index);
-                var multiplier = businessComponent.BusinessConfig.GetMultiplier1Income(levelComponent.LevelModificator1);
-                multiplier *= businessComponent.BusinessConfig.GetMultiplier2Income(levelComponent.LevelModificator2);
 
+                
+                double multiplier = 1;
+                for (int i = 0; i < levelComponent.Levels.Count; i++)
+                {
+                    var level = levelComponent.Levels[i];
+                    multiplier *= businessComponent.BusinessConfig.GetMultiplierIncome(i, level);
+                }
+                
                 ref var multiplierIncomeComponent = ref _filterModifierIncome.Get1(index);
                 multiplierIncomeComponent.Multiplier = multiplier;
             }

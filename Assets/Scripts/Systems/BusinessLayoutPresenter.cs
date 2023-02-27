@@ -1,5 +1,6 @@
 ﻿using System;
 using Configs.Resource.InternalAssets.Infrustructure.Extensions;
+using DefaultNamespace.Configs;
 using Layouts;
 using UnityEngine;
 
@@ -38,6 +39,23 @@ namespace DefaultNamespace
         public void SetIncome(double income)
         {
             _layout.SetIncome(income.ToBigNum());
+        }
+
+        public void SetUpgradeCost(AttributeConfig attributeConfig, int level)
+        {
+            var cost = attributeConfig.GetCost(level);
+            var resourceConfig = attributeConfig.ResourceConfig;
+            _layout.SetUpgradeCost(resourceConfig, cost);
+        }
+
+        public void SetInteractableUpgradeButton(bool isInteractable)
+        {
+            _layout.SetInteractableUpgradeButton(isInteractable);
+        }
+
+        public void AddUpgradeModifierClickListener(Action<int> onClick)
+        {
+            _layout.AddUpgradeModifierClickListener(onClick);
         }
     }
     

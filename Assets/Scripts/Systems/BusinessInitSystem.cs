@@ -21,6 +21,8 @@ namespace DefaultNamespace
                 ref var multiplierIncomeComponent = ref businessEntity.Get<MultiplierIncomeComponent>();
                 
                 ref var modifierComponent = ref businessEntity.Get<LevelModifiersIncomeComponent>();
+                modifierComponent.Levels = new List<int>() {0, 0};
+                
                 ref var levelComponent = ref businessEntity.Get<LevelComponent>();
                 
                 

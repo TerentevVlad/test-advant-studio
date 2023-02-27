@@ -1,23 +1,28 @@
-﻿using Leopotam.Ecs;
+﻿using Components;
+using Leopotam.Ecs;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class BusinessProductionProcessSystem : IEcsRunSystem
     {
-        private EcsFilter<ProductionComponent> _productionFilter;
+        private EcsFilter<ProductionComponent, BusinessComponent, BusinessIncome> _productionFilter;
+        private PlayerResourceContainer _playerResourceContainer;
         
         public void Run()
         {
             foreach (var index in _productionFilter)
             {
-                ref var businessComponent = ref _productionFilter.Get1(index);
-                if (businessComponent.IsActive)
+                ref var productionComponent = ref _productionFilter.Get1(index);
+                if (productionComponent.IsActive)
                 {
-                    businessComponent.PassTime += Time.deltaTime;
-                    if (businessComponent.PassTime >= businessComponent.ProductionTime)
+                    productionComponent.PassTime += Time.deltaTime;
+                    if (productionComponent.PassTime >= productionComponent.ProductionTime)
                     {
-                        businessComponent.PassTime = 0;
+                        ref var incomeComponent = ref _productionFilter.Get3(index);
+
+                        _playerResourceContainer.AddSoft(incomeComponent.Income);
+                        productionComponent.PassTime = 0;
                     }
                 }
             }       

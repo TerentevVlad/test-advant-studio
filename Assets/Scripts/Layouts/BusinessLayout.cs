@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Configs.Resource;
 using DefaultNamespace;
 using TMPro;
 using UnityEngine;
@@ -10,8 +12,12 @@ namespace Layouts
         [SerializeField] private TextMeshProUGUI _title;
         [SerializeField] private PropertyLayout _propertyLevel;
         [SerializeField] private PropertyLayout _propertyIncome;
-        [SerializeField] private ButtonLayout _button;
+        [SerializeField] private ButtonLayoutWithResource _buttonUpgrade;
         [SerializeField] private ProgressLayout _progressLayout;
+        [SerializeField] private List<ButtonLayoutPropertyWithResource> _buttonsModifier;
+
+
+
         private void SetTitle(string title)
         {
             _title.text = title;
@@ -24,7 +30,7 @@ namespace Layouts
 
         public void AddBuyClickListener(Action onClick)
         {
-            _button.AddOnClickListener(onClick);
+            _buttonUpgrade.AddOnClickListener(onClick);
         }
 
         public void SetProgress(float current, float max)
@@ -40,6 +46,29 @@ namespace Layouts
         public void SetIncome(string toBigNum)
         {
             _propertyIncome.SetValue(toBigNum);
+        }
+
+        public void SetUpgradeCost(IResourceConfig resourceConfig, double cost)
+        {
+            _buttonUpgrade.SetResource(resourceConfig, cost);
+        }
+
+        public void SetInteractableUpgradeButton(bool isInteractable)
+        {
+            _buttonUpgrade.SetInteractable(isInteractable);
+        }
+
+        public void AddUpgradeModifierClickListener(Action<int> onClick)
+        {
+            for (int i = 0; i < _buttonsModifier.Count; i++)
+            {
+                var button = _buttonsModifier[i];
+                var index = i;
+                button.AddOnClickListener(() =>
+                {
+                    onClick?.Invoke(index);
+                });
+            }
         }
     }
 }

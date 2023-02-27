@@ -1,4 +1,6 @@
 ﻿using System;
+using Configs.Balance;
+using Configs.Resource;
 using UnityEngine;
 
 namespace DefaultNamespace.Configs
@@ -9,19 +11,27 @@ namespace DefaultNamespace.Configs
         [SerializeField] private string _name = "title";
         [SerializeField] private float _productionTime = 10;
 
-        [SerializeField] private ProgressionValue _income;
-        [SerializeField] private ProgressionValue _businessCost;
-        
+        [SerializeField] private AttributeConfig _baseIncome;
+
         [SerializeField] private ProgressionValue _multiplierIncome1;
         [SerializeField] private ProgressionValue _multiplierIncome2;
         public string Name => _name;
 
         public float ProductionTime => _productionTime;
 
-        public double GetCost(int level) => _businessCost.GetValue(level);
 
-        public double GetIncome(int levelBusiness) => _income.GetValue(levelBusiness);
+        public AttributeConfig GetIncomeAttribute() => _baseIncome;
+        public double GetIncome(int levelBusiness) => _baseIncome.GetValue(levelBusiness);
 
+        public double GetMultiplierIncome(int index, int level)
+        {
+            switch (index)
+            {
+                case 0: return _multiplierIncome1.GetValue(level);
+                case 1 : return _multiplierIncome2.GetValue(level);
+                default: throw new NotImplementedException();
+            }
+        }
         public double GetMultiplier1Income(int level)
         {
             return _multiplierIncome1.GetValue(level);
@@ -37,9 +47,13 @@ namespace DefaultNamespace.Configs
     [Serializable]
     public class AttributeConfig
     {
-        [SerializeField] private ProgressionValue _cost;
+        [SerializeField] private CostValue _cost;
         [SerializeField] private ProgressionValue _value;
-        
+
+        public IResourceConfig ResourceConfig => _cost.Resource;
+        public double GetCost(int level) => _cost.GetValue(level);
+        public double GetValue(int level) => _value.GetValue(level);
+
     }
 
    

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DefaultNamespace.Configs;
 
 namespace DefaultNamespace
@@ -16,7 +17,6 @@ namespace DefaultNamespace
 
     public struct LevelModifiersIncomeComponent
     {
-        public int LevelModificator1;
-        public int LevelModificator2;
+        public List<int> Levels;
     }
 }
