@@ -1,16 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DefaultNamespace;
-using DefaultNamespace.Configs;
-using Layouts;
+using Configs;
 using Leopotam.Ecs;
 using Leopotam.Ecs.UnityIntegration;
+using ResourceSystem;
 using Saves;
 using Systems;
+using Systems.Presenters;
 
-namespace Installers
+namespace EntryPointSystems
 {
     public class StartupGameEcsWorld : IDisposable
     {

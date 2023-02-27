@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace.Configs
+namespace Configs.Balance
 {
     [CreateAssetMenu(fileName = "AdditiveBalanceFunctionWithStartValue",
         menuName = "Configs/Balance/AdditiveBalanceFunctionWithStartValue", order = 0)]

@@ -2,7 +2,7 @@ using System;
 using Layouts;
 using UnityEngine;
 
-namespace Installers
+namespace Configs
 {
     [Serializable]
     public class BusinessLayoutConfig

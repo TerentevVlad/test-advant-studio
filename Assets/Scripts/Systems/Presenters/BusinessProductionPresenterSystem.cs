@@ -1,7 +1,8 @@
-﻿using DefaultNamespace;
+﻿using Components;
+using Components.StateComponents;
 using Leopotam.Ecs;
 
-namespace Systems
+namespace Systems.Presenters
 {
     public class BusinessProductionPresenterSystem : IEcsRunSystem
     {

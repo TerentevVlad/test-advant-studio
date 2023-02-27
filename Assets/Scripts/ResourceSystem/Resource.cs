@@ -1,6 +1,6 @@
 using Configs.Resource;
 
-namespace DefaultNamespace
+namespace ResourceSystem
 {
     public class Resource
     {

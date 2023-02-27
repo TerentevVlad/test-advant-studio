@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Data.Common;
 using Components;
-using DefaultNamespace.Configs;
+using Components.Income;
+using Components.StateComponents;
+using Configs;
 using Leopotam.Ecs;
 using Saves;
 
-namespace DefaultNamespace
+namespace Systems
 {
     public class BusinessInitSystem : IEcsInitSystem
     {

@@ -4,33 +4,36 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResourceLayout : MonoBehaviour
+namespace Layouts
 {
-    [SerializeField] private RectTransform _iconContainer;
-    [SerializeField] private Image _icon;
-    [SerializeField] private TextMeshProUGUI _text;
-
-
-    public void SetValue(IResourceConfig resourceConfig, double value)
+    public class ResourceLayout : MonoBehaviour
     {
-        SetValue(resourceConfig, value.ToBigNum());
-    }
+        [SerializeField] private RectTransform _iconContainer;
+        [SerializeField] private Image _icon;
+        [SerializeField] private TextMeshProUGUI _text;
+
+
+        public void SetValue(IResourceConfig resourceConfig, double value)
+        {
+            SetValue(resourceConfig, value.ToBigNum());
+        }
     
-    public void SetValue(IResourceConfig resourceConfig, string value)
-    {
-        if(resourceConfig != null)
-            _icon.sprite = resourceConfig.Sprite;
-        _text.text = value;
-    }
+        public void SetValue(IResourceConfig resourceConfig, string value)
+        {
+            if(resourceConfig != null)
+                _icon.sprite = resourceConfig.Sprite;
+            _text.text = value;
+        }
     
 
-    public void SetValue(double value)
-    {
-        _text.text = value.ToBigNum();
-    }
+        public void SetValue(double value)
+        {
+            _text.text = value.ToBigNum();
+        }
 
-    public void SetActiveResourceIcon(bool isActive)
-    {
-        _iconContainer.gameObject.SetActive(isActive);
+        public void SetActiveResourceIcon(bool isActive)
+        {
+            _iconContainer.gameObject.SetActive(isActive);
+        }
     }
 }

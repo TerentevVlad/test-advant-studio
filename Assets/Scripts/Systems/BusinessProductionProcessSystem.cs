@@ -1,8 +1,11 @@
 ﻿using Components;
+using Components.Income;
+using Components.StateComponents;
 using Leopotam.Ecs;
+using ResourceSystem;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Systems
 {
     public class BusinessProductionProcessSystem : IEcsRunSystem
     {

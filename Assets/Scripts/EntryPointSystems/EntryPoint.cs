@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
-using DefaultNamespace;
-using DefaultNamespace.Configs;
+using Configs;
 using Layouts;
+using Layouts.Presenters;
+using ResourceSystem;
 using Saves;
 using UnityEngine;
 
-namespace Installers
+namespace EntryPointSystems
 {
-    public class GameModelInstaller : MonoBehaviour
+    public class EntryPoint : MonoBehaviour
     {
         [SerializeField] private MainWindowLayout _mainWindowLayout;
         [SerializeField] private List<BusinessConfig> _businessConfigs;

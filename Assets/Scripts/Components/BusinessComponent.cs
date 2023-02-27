@@ -1,22 +1,10 @@
+using Configs;
 
-using System.Collections.Generic;
-using DefaultNamespace.Configs;
-
-namespace DefaultNamespace
+namespace Components
 {
     public struct BusinessComponent
     {
         public string Name;
         public BusinessConfig BusinessConfig;
-    }
-
-    public struct LevelComponent
-    {
-        public int Level;
-    }
-
-    public struct LevelModifiersIncomeComponent
-    {
-        public List<int> Levels;
     }
 }

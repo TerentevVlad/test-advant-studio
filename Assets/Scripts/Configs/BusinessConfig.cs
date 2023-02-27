@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Configs.Balance;
-using Configs.Resource;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace DefaultNamespace.Configs
+namespace Configs
 {
     [CreateAssetMenu(menuName = "Configs/BusinessConfig", fileName = nameof(BusinessConfig))]
     public class BusinessConfig : ScriptableObject
@@ -34,23 +31,4 @@ namespace DefaultNamespace.Configs
 
         public int NumMultiplierAttributes => _multipliersIncome.Count;
     }
-
-    
-
-    [Serializable]
-    public class AttributeConfig
-    {
-        [SerializeField] private string _name;
-        [SerializeField] private CostValue _cost;
-        [SerializeField] private ProgressionValue _value;
-
-        public IResourceConfig ResourceConfig => _cost.Resource;
-        public double GetCost(int level) => _cost.GetValue(level);
-        public double GetValue(int level) => _value.GetValue(level);
-
-        public string GetName() => _name;
-
-    }
-
-   
 }

@@ -1,9 +1,10 @@
 ﻿using System;
+using Components;
+using Components.StateComponents;
+using Configs;
 using Configs.Resource.InternalAssets.Infrustructure.Extensions;
-using DefaultNamespace.Configs;
-using Layouts;
 
-namespace DefaultNamespace
+namespace Layouts.Presenters
 {
     public class BusinessLayoutPresenter
     {

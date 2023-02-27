@@ -1,4 +1,4 @@
-namespace DefaultNamespace
+namespace Components.StateComponents
 {
     public struct ProductionComponent
     {

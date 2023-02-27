@@ -1,11 +1,9 @@
-﻿namespace Configs.Resource
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using static System.Globalization.CultureInfo;
-    using static System.Globalization.CultureTypes;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
+namespace Configs.Resource
+{
     namespace InternalAssets.Infrustructure.Extensions
     {
         public static class BigNumExtension

@@ -1,8 +1,8 @@
 ﻿using Components;
-using DefaultNamespace;
+using Components.Income;
 using Leopotam.Ecs;
 
-namespace Systems
+namespace Systems.Presenters
 {
     public class BusinessIncomePresenterSystem : IEcsRunSystem
     {

@@ -1,4 +1,6 @@
-﻿namespace DefaultNamespace
+﻿using Layouts.Presenters;
+
+namespace Components
 {
     public struct BusinessPresenterComponent
     {

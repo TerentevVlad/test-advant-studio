@@ -5,7 +5,7 @@ using Configs.Resource;
 using Saves;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace ResourceSystem
 {
     public class PlayerResourceContainer
     {

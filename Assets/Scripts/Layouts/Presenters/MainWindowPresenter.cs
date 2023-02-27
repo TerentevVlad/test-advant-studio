@@ -1,7 +1,6 @@
-using DefaultNamespace;
-using Layouts;
+using ResourceSystem;
 
-namespace Installers
+namespace Layouts.Presenters
 {
     public class MainWindowPresenter
     {

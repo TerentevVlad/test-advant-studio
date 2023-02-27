@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace.Configs
+namespace Configs.Balance
 {
     public abstract class BalanceFunction : ScriptableObject
     {

@@ -1,5 +1,4 @@
-﻿using DefaultNamespace.Configs;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Configs.Balance
 {

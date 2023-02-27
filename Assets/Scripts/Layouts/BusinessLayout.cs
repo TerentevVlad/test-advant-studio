@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Components;
 using Configs.Resource;
-using DefaultNamespace;
 using TMPro;
 using UnityEngine;
 

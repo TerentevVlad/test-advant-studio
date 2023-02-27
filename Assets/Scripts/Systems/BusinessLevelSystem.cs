@@ -1,6 +1,7 @@
-﻿using Leopotam.Ecs;
+﻿using Components.StateComponents;
+using Leopotam.Ecs;
 
-namespace DefaultNamespace
+namespace Systems
 {
     public class BusinessLevelSystem : IEcsRunSystem
     {
