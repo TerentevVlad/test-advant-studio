@@ -2,6 +2,7 @@
 using DefaultNamespace;
 using DefaultNamespace.Configs;
 using Layouts;
+using Saves;
 using UnityEngine;
 
 namespace Installers
@@ -17,15 +18,25 @@ namespace Installers
       
         private void Awake()
         {
-            PlayerResourceContainer playerResourceContainer = new PlayerResourceContainer(_playerResourceConfigs);
-
+            DataBase dataBase = new DataBase();
+            ResourceDbAdapter resourceDbAdapter = new ResourceDbAdapter("PlayerResources", dataBase);
+            Dictionary<BusinessConfig, BusinessDbAdapter> businessDbAdapters = new Dictionary<BusinessConfig, BusinessDbAdapter>();
+            foreach (var businessConfig in _businessConfigs)
+            {
+                businessDbAdapters.Add(businessConfig, new BusinessDbAdapter(businessConfig.Key, dataBase));
+            }
+            
+            
+            
+            PlayerResourceContainer playerResourceContainer = new PlayerResourceContainer(_playerResourceConfigs, resourceDbAdapter);
             MainWindowPresenter mainWindowPresenter = new MainWindowPresenter(playerResourceContainer, _mainWindowLayout);
             
             
             _startupGameEcsWorld = new StartupGameEcsWorld(
                 _businessConfigs,
                 _businessLayoutConfig,
-                playerResourceContainer);
+                playerResourceContainer,
+                businessDbAdapters);
         }
 
         private void Update()

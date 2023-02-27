@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c527344fda34dc6a9acaeda32d2f91f, type: 3}
   m_Name: BusinessConfig 3
   m_EditorClassIdentifier: 
+  _key: business_3
   _name: Business 3
   _productionTime: 10
   _baseIncome:
@@ -104,33 +105,3 @@ MonoBehaviour:
       - name: "2\t4"
       - name: "3\t5,5"
       - name: "4\t7"
-  _multiplierIncome1:
-    _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
-    _startValue: 1
-    _xArgument: 0.5
-    _yArgument: 0
-    _zArgument: 0
-    _customStartStepCalculate: 0
-    _numShowKeys: 5
-    _startStep: 0
-    _keyCurves:
-    - name: "0\t1"
-    - name: "1\t1,5"
-    - name: "2\t2"
-    - name: "3\t2,5"
-    - name: "4\t3"
-  _multiplierIncome2:
-    _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
-    _startValue: 1
-    _xArgument: 1
-    _yArgument: 0
-    _zArgument: 0
-    _customStartStepCalculate: 0
-    _numShowKeys: 5
-    _startStep: 0
-    _keyCurves:
-    - name: "0\t1"
-    - name: "1\t2"
-    - name: "2\t3"
-    - name: "3\t4"
-    - name: "4\t5"

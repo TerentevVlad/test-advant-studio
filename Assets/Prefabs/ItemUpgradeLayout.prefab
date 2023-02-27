@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6072a093844f249a52aca81a63614e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textTitle: {fileID: 0}
   _button: {fileID: 1301211188826594393}
   _resourceLayout: {fileID: 1618156421488548822}
 --- !u!1 &1301211188980694810
@@ -1008,6 +1009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720d1b8f42404f3aa92ce962008f4692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textTitle: {fileID: 2301312128489701862}
   _button: {fileID: 3466757408532768544}
   _resourceLayout: {fileID: 6057113276010503764}
   _propertyLayout: {fileID: 7951100897445019093}
@@ -1049,6 +1051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720d1b8f42404f3aa92ce962008f4692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textTitle: {fileID: 4925220632643394617}
   _button: {fileID: 3563778207347862364}
   _resourceLayout: {fileID: 2473097461415115897}
   _propertyLayout: {fileID: 129613378697301601}

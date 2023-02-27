@@ -2,26 +2,67 @@
 using System.Collections.Generic;
 using System.Linq;
 using Configs.Resource;
+using Saves;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class PlayerResourceContainer
     {
+        private readonly ResourceDbAdapter _resourceDbAdapter;
         private readonly List<Resource> _resources;
 
         public event Action<Resource> OnValueChanged; 
-        public PlayerResourceContainer(PlayerResourceConfigs playerResourceConfigs)
+        public PlayerResourceContainer(PlayerResourceConfigs playerResourceConfigs, ResourceDbAdapter resourceDbAdapter)
         {
+            _resourceDbAdapter = resourceDbAdapter;
             _resources = new List<Resource>();
-            foreach (var config in playerResourceConfigs.Resources)
+
+            var resourcesData = resourceDbAdapter.Get();
+            if (resourcesData.Resources.Count == 0)
             {
-                _resources.Add(new Resource()
+                foreach (var config in playerResourceConfigs.Resources)
                 {
-                    ResourceConfig =  config,
-                    Value = config.InitValue
+                    _resources.Add(new Resource()
+                    {
+                        ResourceConfig = config,
+                        Value = config.InitValue
+                    });
+                    
+                    _resourceDbAdapter.Set(ConvertResourcesToResourceData());
+                }
+            }
+            else
+            {
+                foreach (var config in playerResourceConfigs.Resources)
+                {
+                    _resources.Add(new Resource()
+                    {
+                        ResourceConfig = config,
+                        Value =  resourcesData.GetValueByKey(config.Key)
+                    });
+                }
+            }
+        }
+
+        private ResourcesData ConvertResourcesToResourceData()
+        {
+            var resourcesData = new ResourcesData
+            {
+                Resources = new List<ResourceData>()
+            };
+
+            foreach (var resource in _resources)
+            {
+                resourcesData.Resources.Add(new ResourceData()
+                {
+                    Key =  resource.ResourceConfig.Key,
+                    Value = resource.Value
                 });
             }
+
+            return resourcesData;
+
         }
 
         public IReadOnlyList<Resource> Resources => _resources;
@@ -31,6 +72,8 @@ namespace DefaultNamespace
         {
             var resource = GetResource(resourceConfig.Key);
             resource.Value -= value;
+            
+            _resourceDbAdapter.Set(ConvertResourcesToResourceData());
             OnValueChanged?.Invoke(resource);
         }
 
@@ -38,6 +81,8 @@ namespace DefaultNamespace
         {
             var resource = GetResource("resource/soft");
             resource.Value += value;
+            
+            _resourceDbAdapter.Set(ConvertResourcesToResourceData());
             OnValueChanged?.Invoke(resource);
         }
     }

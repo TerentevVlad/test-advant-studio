@@ -16,16 +16,11 @@ namespace Layouts
         [SerializeField] private ProgressLayout _progressLayout;
         [SerializeField] private List<ButtonLayoutPropertyWithResource> _buttonsModifier;
 
-
-
-        private void SetTitle(string title)
-        {
-            _title.text = title;
-        }
+        
 
         public void Init(BusinessComponent businessComponent)
         {
-            SetTitle(businessComponent.Name);
+            _title.text = businessComponent.Name;
         }
 
         public void AddBuyClickListener(Action onClick)
@@ -90,6 +85,11 @@ namespace Layouts
         public void SetModifierValue(int index, string percent)
         {
             _buttonsModifier[index].SetPropertyValue(percent);
+        }
+
+        public void SetModifierName(int index, string title)
+        {
+            _buttonsModifier[index].SetTitle(title);
         }
     }
 }

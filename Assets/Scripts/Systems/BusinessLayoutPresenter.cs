@@ -2,7 +2,6 @@
 using Configs.Resource.InternalAssets.Infrustructure.Extensions;
 using DefaultNamespace.Configs;
 using Layouts;
-using UnityEngine;
 
 namespace DefaultNamespace
 {
@@ -14,10 +13,10 @@ namespace DefaultNamespace
             _layout = layout;
         }
         
-        public void Init(BusinessComponent businessComponent)
+        public void Init(BusinessComponent businessComponent, ProductionComponent productionComponent)
         {
             _layout.Init(businessComponent);
-            SetProgress(businessComponent.ProductionTime);
+            SetProgress(productionComponent);
         }
 
         public void SetProgress(ProductionComponent productionComponent)
@@ -29,8 +28,7 @@ namespace DefaultNamespace
         {
             _layout.AddBuyClickListener(onClick);
         }
-
-
+        
         public void SetLevel(int level)
         {
             _layout.SetLevel(level);
@@ -73,6 +71,7 @@ namespace DefaultNamespace
             var cost = incomeAttribute.GetCost(level);
             var resourceConfig = incomeAttribute.ResourceConfig;
             _layout.SetModifierUpgradeCost(index, resourceConfig, cost);
+            
         }
 
         public void SetModifierValue(int index, AttributeConfig incomeAttributeModifier)
@@ -82,6 +81,7 @@ namespace DefaultNamespace
             value -= 100;
             string percent = $"+{value}%";
             _layout.SetModifierValue(index, percent);
+            _layout.SetModifierName(index, incomeAttributeModifier.GetName());
         }
     }
     

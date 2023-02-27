@@ -7,6 +7,7 @@ using DefaultNamespace.Configs;
 using Layouts;
 using Leopotam.Ecs;
 using Leopotam.Ecs.UnityIntegration;
+using Saves;
 using Systems;
 
 namespace Installers
@@ -19,7 +20,8 @@ namespace Installers
         private EcsSystems _updateSystems;
 
         public StartupGameEcsWorld(List<BusinessConfig> businessConfigs,
-            BusinessLayoutConfig businessLayoutConfig, PlayerResourceContainer playerResourceContainer)
+            BusinessLayoutConfig businessLayoutConfig, PlayerResourceContainer playerResourceContainer,
+            Dictionary<BusinessConfig, BusinessDbAdapter> businessDbAdapters)
         {
             _businessConfigs = businessConfigs;
 
@@ -37,6 +39,7 @@ namespace Installers
             _initSystems.Inject(_businessConfigs);
             _initSystems.Inject(businessLayoutConfig);
             _initSystems.Inject(playerResourceContainer);
+            _initSystems.Inject(businessDbAdapters);
 
             _initSystems.Init();
 
@@ -54,6 +57,7 @@ namespace Installers
             _updateSystems.Add(new BusinessProductionPresenterSystem());
             _updateSystems.Add(new BusinessIncomePresenterSystem());
             _updateSystems.Inject(playerResourceContainer);
+            _updateSystems.Inject(businessDbAdapters);
 
             _updateSystems.Init();
         }

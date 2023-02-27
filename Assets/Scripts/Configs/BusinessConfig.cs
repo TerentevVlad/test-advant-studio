@@ -9,6 +9,7 @@ namespace DefaultNamespace.Configs
     [CreateAssetMenu(menuName = "Configs/BusinessConfig", fileName = nameof(BusinessConfig))]
     public class BusinessConfig : ScriptableObject
     {
+        [SerializeField] private string _key;
         [SerializeField] private string _name = "title";
         [SerializeField] private float _productionTime = 10;
 
@@ -20,6 +21,7 @@ namespace DefaultNamespace.Configs
         public string Name => _name;
 
         public float ProductionTime => _productionTime;
+        public string Key => _key;
 
 
         public AttributeConfig GetIncomeAttribute() => _baseIncome;
@@ -29,6 +31,8 @@ namespace DefaultNamespace.Configs
         {
             return _multipliersIncome[index];
         }
+
+        public int NumMultiplierAttributes => _multipliersIncome.Count;
     }
 
     

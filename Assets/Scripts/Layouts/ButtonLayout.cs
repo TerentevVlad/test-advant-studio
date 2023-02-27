@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ namespace Layouts
 {
     public class ButtonLayout : MonoBehaviour
     {
+        [SerializeField] private TextMeshProUGUI _textTitle;
         [SerializeField] private Button _button;
 
         public void AddOnClickListener(Action onClick)
@@ -16,6 +18,11 @@ namespace Layouts
         public void SetInteractable(bool isInteractable)
         {
             _button.interactable = isInteractable;
+        }
+
+        public void SetTitle(string title)
+        {
+            _textTitle.text = title;
         }
     }
 }

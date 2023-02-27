@@ -1,6 +1,9 @@
-﻿using Installers;
+﻿using System.Collections.Generic;
+using DefaultNamespace.Configs;
+using Installers;
 using Layouts;
 using Leopotam.Ecs;
+using Saves;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -10,7 +13,11 @@ namespace DefaultNamespace
         private EcsFilter<LevelComponent, UpgradeBusinessComponent, BusinessComponent> _upgradeComponentFilter;
         private EcsFilter<LevelModifiersIncomeComponent, BuyModifierComponent, BusinessComponent> _modifierComponentFilter;
         
+        private Dictionary<BusinessConfig, BusinessDbAdapter> _businessDbAdapters;
+
         private PlayerResourceContainer _playerResourceContainer;
+
+       
         public void Run()
         {
             foreach (var index in _upgradeComponentFilter)
@@ -19,7 +26,7 @@ namespace DefaultNamespace
                 
                 ref var levelComponent = ref _upgradeComponentFilter.Get1(index);
                 ref var command = ref _upgradeComponentFilter.Get2(index);
-                
+                var config = _upgradeComponentFilter.Get3(index).BusinessConfig;
                 var incomeAttribute = _upgradeComponentFilter.Get3(index).BusinessConfig.GetIncomeAttribute();
                 
                 var resource = _playerResourceContainer.GetResource(incomeAttribute.ResourceConfig.Key);
@@ -29,6 +36,8 @@ namespace DefaultNamespace
                 {
                     _playerResourceContainer.Subtract(resource.ResourceConfig, cost);
                     levelComponent.Level++;
+                    
+                    SaveLevel(config, levelComponent.Level);
                 }
 
                 entity.Del<UpgradeBusinessComponent>();
@@ -40,6 +49,7 @@ namespace DefaultNamespace
                 ref var levelComponent = ref _modifierComponentFilter.Get1(index);
                 var buyModifierComponent = _modifierComponentFilter.Get2(index);
                 var indexModifier = buyModifierComponent.IndexModifier;
+                var config = _upgradeComponentFilter.Get3(index).BusinessConfig;
                 
                 var multiplierAttribute = _modifierComponentFilter.Get3(index).BusinessConfig.GetMultiplierIncome(indexModifier);
 
@@ -50,23 +60,42 @@ namespace DefaultNamespace
 
                 if (resource.Value >= cost)
                 {
-                    Debug.LogError("Subtract "+  cost);
                     _playerResourceContainer.Subtract(resource.ResourceConfig, cost);
                     levelComponent.Levels[indexModifier]++;
+                    SaveLevelModifiers(config, levelComponent.Levels);
                 }
                 
                
                 entity.Del<BuyModifierComponent>();
             }
         }
+        
+        private void SaveLevel(BusinessConfig config, int level)
+        {
+            var dbAdapter = _businessDbAdapters[config];
+            var businessData = dbAdapter.Get();
+            businessData.Level = level;
+            dbAdapter.Set(businessData);
+        }
+
+        private void SaveLevelModifiers(BusinessConfig config, List<int> levels)
+        {
+            var dbAdapter = _businessDbAdapters[config];
+            var businessData = dbAdapter.Get();
+            businessData.LevelModifiers = levels;
+            dbAdapter.Set(businessData);
+        }
     }
+    
+    
     
     public class BusinessInitLayoutSystem : IEcsInitSystem
     {
-        private EcsFilter<BusinessComponent> _businessComponentFilter;
+        private EcsFilter<BusinessComponent,ProductionComponent> _businessComponentFilter;
         
         private BusinessLayoutConfig _layoutConfig;
         private EcsWorld _world;
+        
         public void Init()
         {
             foreach (var index in _businessComponentFilter)
@@ -81,7 +110,7 @@ namespace DefaultNamespace
                 ref var businessPresenterComponent = ref entity.Get<BusinessPresenterComponent>();
                 
                 businessPresenterComponent.Presenter = new BusinessLayoutPresenter(layout);
-                businessPresenterComponent.Presenter.Init(businessComponent);
+                businessPresenterComponent.Presenter.Init(businessComponent, _businessComponentFilter.Get2(index));
                 businessPresenterComponent.Presenter.AddBuyClickListener(() =>
                 {
                     ref var e = ref _businessComponentFilter.GetEntity(index);

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c527344fda34dc6a9acaeda32d2f91f, type: 3}
   m_Name: BusinessConfig 1
   m_EditorClassIdentifier: 
+  _key: business_1
   _name: Business 1
   _productionTime: 3
   _baseIncome:
@@ -60,7 +61,7 @@ MonoBehaviour:
       _startStep: 0
       _keyCurves:
       - name: "0\t50"
-      _resource: {fileID: 0}
+      _resource: {fileID: 11400000, guid: 266cf1c532894e645b82937b7b46a6bb, type: 2}
     _value:
       _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
       _startValue: 1
@@ -88,7 +89,7 @@ MonoBehaviour:
       _startStep: 1
       _keyCurves:
       - name: "0\t400"
-      _resource: {fileID: 0}
+      _resource: {fileID: 11400000, guid: 266cf1c532894e645b82937b7b46a6bb, type: 2}
     _value:
       _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
       _startValue: 1
@@ -104,33 +105,3 @@ MonoBehaviour:
       - name: "2\t3"
       - name: "3\t4"
       - name: "4\t5"
-  _multiplierIncome1:
-    _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
-    _startValue: 1
-    _xArgument: 0.5
-    _yArgument: 1
-    _zArgument: 0
-    _customStartStepCalculate: 0
-    _numShowKeys: 5
-    _startStep: 0
-    _keyCurves:
-    - name: "0\t1"
-    - name: "1\t1,5"
-    - name: "2\t2"
-    - name: "3\t2,5"
-    - name: "4\t3"
-  _multiplierIncome2:
-    _growthFunction: {fileID: 11400000, guid: 728871081c152114c8cb42c1995933d1, type: 2}
-    _startValue: 1
-    _xArgument: 1
-    _yArgument: 0
-    _zArgument: 0
-    _customStartStepCalculate: 0
-    _numShowKeys: 5
-    _startStep: 0
-    _keyCurves:
-    - name: "0\t1"
-    - name: "1\t2"
-    - name: "2\t3"
-    - name: "3\t4"
-    - name: "4\t5"

@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using DefaultNamespace.Configs;
 
@@ -6,7 +7,6 @@ namespace DefaultNamespace
     public struct BusinessComponent
     {
         public string Name;
-        public ProductionComponent ProductionTime;
         public BusinessConfig BusinessConfig;
     }
 
